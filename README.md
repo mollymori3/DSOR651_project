@@ -1,5 +1,5 @@
-# DSOR651_project
-Final project for DSOR651
+# DSOR651 Final Project
+The following content outlines the context of the final project.  
 
 ## 1. Algorithm Purpose
 
