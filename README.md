@@ -2,6 +2,7 @@
 The following content outlines the context of the final project.  
 
 ## 1. Algorithm Purpose
+The purpose of the algorithm is to generate a user-specified number of random forest models in parallel on a given dataset. 
 
 ## 2. Hyperparameters
 There are four user-specified hyperparameters:
