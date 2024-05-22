@@ -19,6 +19,8 @@ The following content outlines the context of the final project.
 
 ## 9. Unit-Testing
 There are 3 unit tests to check the capability of the code to handle errors and logic.  
-The first is a unit test to ensure that the accuracy of each random forest model is between 0 and 1.
-The next is a unit test to check that the dimensions of the data entered (X, y) are compatible. 
-The last is a unit test to enforce that all user-defined hyperparameters are non-negative. 
+- The first is a unit test to ensure that the accuracy of each random forest model is between 0 and 1.
+
+- The next is a unit test to check that the dimensions of the data entered (X, y) are compatible.
+
+- The last is a unit test to enforce that all user-defined hyperparameters are non-negative. 
