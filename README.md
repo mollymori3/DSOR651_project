@@ -75,6 +75,7 @@ For my first three datasets -- randomly generated numbers, pizza data, and wine 
 
 ## 6. Visualization of Algorithm
 
+<img width="407" alt="image" src="https://github.com/mollymori3/DSOR651_project/assets/144690206/655ec083-e605-492f-bb0e-7b518c024479">
 
 
 ## 7. Benchmark Results
