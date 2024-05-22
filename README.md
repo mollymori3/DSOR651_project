@@ -21,9 +21,20 @@ For my first three datasets -- randomly generated numbers, pizza data, and wine 
 
 ## 4. Pseudocode
 
-   ** Training provided data **
+   **Training provided data**
 
-   ** Results of provided data **
+   import necessary packages
+
+   1. `train_partition()` function to train data
+           a. Split data into training and testing
+           b. Fit models based on hyperparameters
+   2. `train_random_forest()` function to feed partitions back to `train_partition `
+           a. Label encode any categorical data
+           b. Split data into partitions
+   3. Create pool with processes equal to number of partitions
+   4. Return results.
+
+   **Results of provided data**
    
     import necessary packages
     import random forest code
@@ -33,7 +44,7 @@ For my first three datasets -- randomly generated numbers, pizza data, and wine 
         3. Call random forest function in random forest module
         4. For all models,
             print accuracies
-        5. Print highest accuracy and which partition it came from
+        5. Print highest accuracy and which partition it came from.
 
 ## 5. Example Code
 
