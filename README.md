@@ -18,10 +18,9 @@ There are four user-specified hyperparameters:
 
 ## 5. Example Code
 
-from random_forest_parallel import train_random_forest
-import numpy as np
+    from random_forest_parallel import train_random_forest
+    import numpy as np
 
-# Example with randomly generated data
     if __name__ == '__main__':
 
         X = np.random.rand(1000, 20)
