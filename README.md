@@ -22,30 +22,27 @@ from random_forest_parallel import train_random_forest
 import numpy as np
 
 # Example with randomly generated data
-if __name__ == '__main__':
+    if __name__ == '__main__':
 
-    X = np.random.rand(1000, 20)  # 1000 data points, 20 features
-    y = np.random.randint(0, 2, size=1000)  # 1000 responses, either 0 or 1
-
-    # Hyperparameters tunable by user
-    n_estimators = 10 # default 100
-    max_depth = 10 # default None
-    min_samples_split = 3 # default 2
-    n_partitions = 7 # default 4
-
-    # Calling function from random_forest_parallel.py
-    accuracies = train_random_forest(X, y, n_estimators = n_estimators, 
-                                     max_depth = max_depth, 
-                                     min_samples_split = min_samples_split, 
-                                     n_partitions = n_partitions)
-
-    # Accuracies from each partition
-    for i, accuracy in enumerate(accuracies):
-        print(f"Accuracy for partition {i}: {accuracy}")
-        
-    # Report highest accuracy and partition from which it was generated
-    print(f"The highest accuracy among the parallel processed random forests is", max(accuracies),
-          "from partition", accuracies.index(max(accuracies)), ".")
+        X = np.random.rand(1000, 20)
+        y = np.random.randint(0, 2, size=1000)
+    
+        n_estimators = 10 
+        max_depth = 10
+        min_samples_split = 3
+        n_partitions = 7
+    
+        # Calling function from random_forest_parallel.py
+        accuracies = train_random_forest(X, y, n_estimators = n_estimators, 
+                                         max_depth = max_depth, 
+                                         min_samples_split = min_samples_split, 
+                                         n_partitions = n_partitions)
+    
+        for i, accuracy in enumerate(accuracies):
+            print(f"Accuracy for partition {i}: {accuracy}")
+            
+        print(f"The highest accuracy among the parallel processed random forests is", max(accuracies),
+              "from partition", accuracies.index(max(accuracies)), ".")
 
 ## 6. Visualization of Algorithm
 
