@@ -23,7 +23,9 @@ For my first three datasets -- randomly generated numbers, pizza data, and wine 
 
    **Training provided data**
 
+
    import necessary packages
+   
      1. `train_partition()` function to train data
              a. Split data into training and testing
              b. Fit models based on hyperparameters
