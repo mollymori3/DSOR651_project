@@ -10,7 +10,7 @@ There are four user-specified hyperparameters:
 1.    *n_estimators* --   the number of trees in each random forest
 2.    *max_depth* --  the maximum vertical levels of the tree
 3.    *min_samples_split* --  the minimum number of samples required to split a node
-4.    *n_partitions* --  the number of random trees to be ran in parallel
+4.    *n_partitions* --  the number of random trees to run in parallel
 
 ## 3. Background
 To build this algorithm, I first learned how to use `RandomForestClassifier()` from Python's `sklearn.ensemble` package given an arbitrary numerical dataset. I explored the various hyperparameters, as defined above, and decided on *accuracy* as my metric of choice for the model.
@@ -20,6 +20,20 @@ With parallel processing in mind, I coded partitioning of the arbitrary data bas
 For my first three datasets -- randomly generated numbers, pizza data, and wine data -- the algorithm worked as intended.  That's because all of these datasets had strictly *numerical* data.  It wasn't until I tried to pass my challenge dataset through that I realized there were no precautinos for *categorical* data.  With this, I coded a `LabelEncoder()` from the `scikitlearn.preprocessing` package which converted all categorical variables to labeled numerical data.  This addition allowed the algorithm to run on the heart data.  
 
 ## 4. Pseudocode
+
+   ** Training provided data **
+
+   ** Results of provided data **
+   
+    import necessary packages
+    import random forest code
+    *Initiate parallel processing*
+        1. Define X, y
+        2. Specify hyperparameters
+        3. Call random forest function in random forest module
+        4. For all models,
+            print accuracies
+        5. Print highest accuracy and which partition it came from
 
 ## 5. Example Code
 
