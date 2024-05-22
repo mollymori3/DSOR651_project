@@ -2,7 +2,7 @@
 The following content outlines the context of the final project.  
 
 ## 1. Algorithm Purpose
-The purpose of the algorithm is to generate a user-specified number of random forest models in parallel on a given dataset. 
+The purpose of the algorithm is to use parallel processing for generating random forests on a user-specified number of partitions.  The algorithm allows the user to define four different hyperparameters.  After all models are generated on the partitions, the accuracies are reported and compared for best result.  
 
 ## 2. Hyperparameters
 There are four user-specified hyperparameters:
@@ -13,6 +13,7 @@ There are four user-specified hyperparameters:
 4.    *n_partitions* --  the number of random trees to be ran in parallel
 
 ## 3. Background
+To build this algorithm, I first learned how to use `RandomForestClassifier()` from Python's `sklearn.ensemble` package.  I then implemented parallel processing via the multiprocessing module.  
 
 ## 4. Pseudocode
 
