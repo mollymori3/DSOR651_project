@@ -6,10 +6,10 @@ The following content outlines the context of the final project.
 ## 2. Hyperparameters
 There are four user-specified hyperparameters:
 
-1. *n_estimators*, the number of trees in each random forest
-2. *max_depth*, the maximum vertical levels of the tree
-3. *min_samples_split*, the minimum number of samples required to split a node
-4. *n_partitions*, the number of random trees to be ran in parallel
+1.    *n_estimators* --   the number of trees in each random forest
+2.    *max_depth* --  the maximum vertical levels of the tree
+3.    *min_samples_split* --  the minimum number of samples required to split a node
+4.    *n_partitions* --  the number of random trees to be ran in parallel
 
 ## 3. Background
 
