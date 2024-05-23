@@ -20,7 +20,7 @@ With parallel processing in mind, I coded partitioning of the arbitrary data bas
 For my first three datasets -- randomly generated numbers, pizza data, and wine data -- the algorithm worked as intended.  That's because all of these datasets had strictly *numerical* data.  It wasn't until I tried to pass my challenge dataset, car data, through that I realized there were no precautions for *categorical* data.  With this, I coded a `LabelEncoder()` from the `scikitlearn.preprocessing` package which converted all categorical variables to labeled numerical data.  This addition allowed the algorithm to run on the car data.  
 
 ## 4. Pseudocode
-
+```
    **Training provided data**
 
      import necessary packages
@@ -33,9 +33,10 @@ For my first three datasets -- randomly generated numbers, pizza data, and wine 
                b. Split data into partitions
        3. Create pool with processes equal to number of partitions
        4. Return results.
+```
 
    **Results of provided data**
-   
+```   
     import necessary packages
     import random forest code
     *Initiate parallel processing*
@@ -44,10 +45,13 @@ For my first three datasets -- randomly generated numbers, pizza data, and wine 
         3. Call random forest function in random forest module
         4. For all models,
             print accuracies
+            print times
         5. Print highest accuracy and which partition it came from.
+           Print fastest time and which partition it came from.
+```
 
 ## 5. Example Code
-
+```
     from random_forest_parallel import train_random_forest
     import numpy as np
 
@@ -72,6 +76,7 @@ For my first three datasets -- randomly generated numbers, pizza data, and wine 
             
         print(f"The highest accuracy among the parallel processed random forests is", max(accuracies),
               "from partition", accuracies.index(max(accuracies)), ".")
+```
 
 ## 6. Visualization of Algorithm
 
@@ -92,13 +97,15 @@ As for accuracy, there is no noticeable trend.  Logically, as the number of part
 
 I learned three main lessons while designing this algorithm:
 
-1. The first is that the type of data matters when using `RandomForestClassification()`.  The first three sets I tested -- to include the arbitrary, pizza, and wine datasets -- consisted of all numerical features and one response variable.  It wasn't until I tested the car data, which included 4 categorical and 1 binary feature, that I realized the algorithm was only capable of processing numerical data. 
+1. The first is that the type of data matters when using `RandomForestClassification()`.  The first three sets I tested -- to include the arbitrary, pizza, and wine datasets -- consisted of all numerical features and one response variable.  It wasn't until I tested the car data, which included 4 categorical and 1 binary feature, that I realized the algorithm was only capable of processing numerical data. Because of this, I included a `LabelEncoder()`.  
 
-   if isinstance(X, pd.DataFrame):
-          label_encoder = LabelEncoder()
-          categorical_cols = X.select_dtypes(include=['object']).columns
-          for col in categorical_cols:
-              X[col] = label_encoder.fit_transform(X[col])
+```
+if isinstance(X, pd.DataFrame):
+      label_encoder = LabelEncoder()
+      categorical_cols = X.select_dtypes(include=['object']).columns
+      for col in categorical_cols:
+          X[col] = label_encoder.fit_transform(X[col])
+```
 
 ## 9. Unit-Testing
 There are 3 unit tests to check the capability of the code to handle errors and logic.  
