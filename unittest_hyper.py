@@ -1,3 +1,8 @@
+'''
+    Unit test to ensure that all hyperparameters are non-negative.
+'''
+
+
 
 import unittest
 from random_forest_parallel import train_random_forest
