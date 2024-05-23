@@ -85,7 +85,7 @@ if __name__ == '__main__':
 
 ## 7. Benchmark Results
 
-<img width="418" alt="image" src="https://github.com/mollymori3/DSOR651_project/assets/144690206/24df10f9-68c6-4ffa-a75b-802097fd790e">
+<img width="302" alt="image" src="https://github.com/mollymori3/DSOR651_project/assets/144690206/21e384fc-1624-4353-ba09-d1bfad0de3ae">
 
 To compare the benchmark results of efficiency and effectiveness, I used the metrics of time and accuracy, respectively.  In the table above are best results for each dataset given a specified *n_estimators* value.  The other hyperparameters were set to default because after some initial trials, only *n_estimators* proved make noticeable change to total times.  
 
