@@ -1,3 +1,8 @@
+'''
+
+Unit test to ensure that all reported accuracies are between 0 and 1.
+
+'''
 
 import unittest
 from sklearn.datasets import make_classification
@@ -5,8 +10,7 @@ from random_forest_parallel import train_random_forest
 
 class TestRandomForestTraining(unittest.TestCase):
     def setUp(self):
-        # Create a synthetic dataset
-        self.X, self.y = make_classification(n_samples=1000, n_features=20, n_informative=15, n_redundant=5, random_state=42)
+        self.X, self.y = make_classification(n_samples = 1000, n_features = 20, n_informative = 15, n_redundant = 5, random_state = 13)
     
     def test_train_random_forest(self):
         # Call the train_random_forest function
