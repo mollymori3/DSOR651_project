@@ -82,7 +82,23 @@ For my first three datasets -- randomly generated numbers, pizza data, and wine 
 
 <img width="418" alt="image" src="https://github.com/mollymori3/DSOR651_project/assets/144690206/24df10f9-68c6-4ffa-a75b-802097fd790e">
 
+To compare the benchmark results of efficiency and effectiveness, I used the metrics of time and accuracy, respectively.  In the table above are best results for each dataset given a specified *n_estimators* value.  The other hyperparameters were set to default because after some initial trials, only *n_estimators* proved make noticeable change to total times.  
+
+It is clear that as the number of estimators in the models increases, the time it takes to process the algorithm increases.  This doesn't necessarily imply that the efficiency decreased, though.  Notice that the value of *n_estimators* increases each time by one order of magnitude.  Surprisingly, the times reflect the same trend -- that is, the times are directly proportional to *n_estimators*.  
+
+As for accuracy, there is no noticeable trend.  Logically, as the number of partitions approaches the number of observations in the dataset, the accuracies will begin to near 0 or 1 (i.e. the random forest either did or did not predict the correct categorization).  This could lead to the false idea that the models are getting more effective, when in reality the models lack adequate data.
+
 ## 8. Lessons Learned
+
+I learned three main lessons while designing this algorithm:
+
+1. 
+
+ if isinstance(X, pd.DataFrame):
+        label_encoder = LabelEncoder()
+        categorical_cols = X.select_dtypes(include=['object']).columns
+        for col in categorical_cols:
+            X[col] = label_encoder.fit_transform(X[col])
 
 ## 9. Unit-Testing
 There are 3 unit tests to check the capability of the code to handle errors and logic.  
