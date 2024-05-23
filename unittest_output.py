@@ -1,7 +1,5 @@
 '''
-
-Unit test to ensure that all reported accuracies are between 0 and 1.
-
+    Unit test to ensure that all reported accuracies are between 0 and 1.
 '''
 
 import unittest
