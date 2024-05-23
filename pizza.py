@@ -1,7 +1,7 @@
 
 '''
     Testing the algorithm on the "pizza" dataset consisting of 147 observations, 8 features, and 1
-    reponse variable.  All features are continuous and the response is categorical.  The goal is to categorize
+    reponse variable.  All features are continuous and the response is categorical.  The goal is to classify
     by brand of pizza.
 '''
 
