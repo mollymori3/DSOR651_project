@@ -51,36 +51,36 @@ import random forest code
 ```
 
 ## 5. Example Code
-    ```
-    from random_forest_parallel import train_random_forest
-    import numpy as np
+```
+from random_forest_parallel import train_random_forest
+import numpy as np
 
-    if __name__ == '__main__':
+if __name__ == '__main__':
 
-        X = np.random.rand(1000, 20)
-        y = np.random.randint(0, 2, size=1000)
-    
-        n_estimators = 10 
-        max_depth = 10
-        min_samples_split = 3
-        n_partitions = 7
-    
-        # Calling function from random_forest_parallel.py
-        accuracies = train_random_forest(X, y, n_estimators = n_estimators, 
-                                         max_depth = max_depth, 
-                                         min_samples_split = min_samples_split, 
-                                         n_partitions = n_partitions)
-    
-        for i, accuracy in enumerate(accuracies):
-            print(f"Accuracy for partition {i}: {accuracy}")
-            
-        print(f"The highest accuracy among the parallel processed random forests is", max(accuracies),
-              "from partition", accuracies.index(max(accuracies)), ".") 
-     ```
+    X = np.random.rand(1000, 20)
+    y = np.random.randint(0, 2, size=1000)
+
+    n_estimators = 10 
+    max_depth = 10
+    min_samples_split = 3
+    n_partitions = 7
+
+    # Calling function from random_forest_parallel.py
+    accuracies = train_random_forest(X, y, n_estimators = n_estimators, 
+                                     max_depth = max_depth, 
+                                     min_samples_split = min_samples_split, 
+                                     n_partitions = n_partitions)
+
+    for i, accuracy in enumerate(accuracies):
+        print(f"Accuracy for partition {i}: {accuracy}")
+        
+    print(f"The highest accuracy among the parallel processed random forests is", max(accuracies),
+          "from partition", accuracies.index(max(accuracies)), ".") 
+ ```
 
 ## 6. Visualization of Algorithm
 
-<img width="407" alt="image" src="https://github.com/mollymori3/DSOR651_project/assets/144690206/655ec083-e605-492f-bb0e-7b518c024479">
+<img width="473" alt="image" src="https://github.com/mollymori3/DSOR651_project/assets/144690206/a6ea3c19-b1be-4005-9924-d06dfa38a85c">
 
 
 ## 7. Benchmark Results
@@ -106,6 +106,49 @@ if isinstance(X, pd.DataFrame):
       for col in categorical_cols:
           X[col] = label_encoder.fit_transform(X[col])
 ```
+
+2.  The second is that partitioning and training had to be two separate functions.  This is because each partition is to be trained in the same way yet separately.  In order to pass the partitions through the random forest fitting, there needed to be calling of functions. 
+
+```
+def train_partition(data_partition, n_estimators, max_depth, min_samples_split):
+    start_time = time.time()
+
+    X_train, y_train, X_test, y_test = data_partition
+
+    clf = RandomForestClassifier(n_estimators = n_estimators, 
+                                 max_depth = max_depth, 
+                                 min_samples_split = min_samples_split)
+    clf.fit(X_train, y_train)
+    y_pred = clf.predict(X_test)
+    accuracy = accuracy_score(y_test, y_pred)
+    end_time = time.time()
+    duration = end_time - start_time  # Duration of the process
+
+    return accuracy, duration  # Effectiveness and efficiency benchmarks
+
+def train_random_forest(X, y, n_estimators = 100, max_depth = None, min_samples_split = 2, n_partitions = 4):
+    if isinstance(X, pd.DataFrame):
+        label_encoder = LabelEncoder()
+        categorical_cols = X.select_dtypes(include=['object']).columns
+        for col in categorical_cols:
+            X[col] = label_encoder.fit_transform(X[col])
+
+    def partition_data(X, y, n_partitions):
+        partitions = []
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.3, random_state = 13)
+        partition_size = len(X_train) // n_partitions 
+
+        for i in range(n_partitions):
+            start = i * partition_size
+            end = (i + 1) * partition_size if i != n_partitions - 1 else len(X_train) # takes care of "leftover" data from partitions
+            X_train_part = X_train[start:end]
+            y_train_part = y_train[start:end]
+            partitions.append((X_train_part, y_train_part, X_test, y_test))
+        
+        return partitions
+```
+
+3.  The third lesson is that `pool.starmap()` is better suited to this particular algorithm than `queue()`.  
 
 ## 9. Unit-Testing
 There are 3 unit tests to check the capability of the code to handle errors and logic.  
