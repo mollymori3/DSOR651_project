@@ -20,38 +20,38 @@ With parallel processing in mind, I coded partitioning of the arbitrary data bas
 For my first three datasets -- randomly generated numbers, pizza data, and wine data -- the algorithm worked as intended.  That's because all of these datasets had strictly *numerical* data.  It wasn't until I tried to pass my challenge dataset, car data, through that I realized there were no precautions for *categorical* data.  With this, I coded a `LabelEncoder()` from the `scikitlearn.preprocessing` package which converted all categorical variables to labeled numerical data.  This addition allowed the algorithm to run on the car data.  
 
 ## 4. Pseudocode
-```
-   **Training provided data**
 
-     import necessary packages
-     
-       1. `train_partition()` function to train data
-               a. Split data into training and testing
-               b. Fit models based on hyperparameters
-       2. `train_random_forest()` function to feed partitions back to `train_partition `
-               a. Label encode any categorical data
-               b. Split data into partitions
-       3. Create pool with processes equal to number of partitions
-       4. Return results.
+   **Training provided data**
+```
+ import necessary packages
+ 
+   1. `train_partition()` function to train data
+           a. Split data into training and testing
+           b. Fit models based on hyperparameters
+   2. `train_random_forest()` function to feed partitions back to `train_partition `
+           a. Label encode any categorical data
+           b. Split data into partitions
+   3. Create pool with processes equal to number of partitions
+   4. Return results.
 ```
 
    **Results of provided data**
 ```   
-    import necessary packages
-    import random forest code
-    *Initiate parallel processing*
-        1. Define X, y
-        2. Specify hyperparameters
-        3. Call random forest function in random forest module
-        4. For all models,
-            print accuracies
-            print times
-        5. Print highest accuracy and which partition it came from.
-           Print fastest time and which partition it came from.
+import necessary packages
+import random forest code
+*Initiate parallel processing*
+    1. Define X, y
+    2. Specify hyperparameters
+    3. Call random forest function in random forest module
+    4. For all models,
+        print accuracies
+        print times
+    5. Print highest accuracy and which partition it came from.
+       Print fastest time and which partition it came from.
 ```
 
 ## 5. Example Code
-```
+    ```
     from random_forest_parallel import train_random_forest
     import numpy as np
 
@@ -75,8 +75,8 @@ For my first three datasets -- randomly generated numbers, pizza data, and wine 
             print(f"Accuracy for partition {i}: {accuracy}")
             
         print(f"The highest accuracy among the parallel processed random forests is", max(accuracies),
-              "from partition", accuracies.index(max(accuracies)), ".")
-```
+              "from partition", accuracies.index(max(accuracies)), ".") 
+     ```
 
 ## 6. Visualization of Algorithm
 
