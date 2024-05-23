@@ -80,6 +80,8 @@ For my first three datasets -- randomly generated numbers, pizza data, and wine 
 
 ## 7. Benchmark Results
 
+<img width="418" alt="image" src="https://github.com/mollymori3/DSOR651_project/assets/144690206/24df10f9-68c6-4ffa-a75b-802097fd790e">
+
 ## 8. Lessons Learned
 
 ## 9. Unit-Testing
