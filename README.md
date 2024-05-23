@@ -92,13 +92,13 @@ As for accuracy, there is no noticeable trend.  Logically, as the number of part
 
 I learned three main lessons while designing this algorithm:
 
-1. 
+1. The first is that the type of data matters when using `RandomForestClassification()`.  The first three sets I tested -- to include the arbitrary, pizza, and wine datasets -- consisted of all numerical features and one response variable.  It wasn't until I tested the car data, which included 4 categorical and 1 binary feature, that I realized the algorithm was only capable of processing numerical data. 
 
- if isinstance(X, pd.DataFrame):
-        label_encoder = LabelEncoder()
-        categorical_cols = X.select_dtypes(include=['object']).columns
-        for col in categorical_cols:
-            X[col] = label_encoder.fit_transform(X[col])
+   if isinstance(X, pd.DataFrame):
+          label_encoder = LabelEncoder()
+          categorical_cols = X.select_dtypes(include=['object']).columns
+          for col in categorical_cols:
+              X[col] = label_encoder.fit_transform(X[col])
 
 ## 9. Unit-Testing
 There are 3 unit tests to check the capability of the code to handle errors and logic.  
