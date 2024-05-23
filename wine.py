@@ -1,7 +1,8 @@
 
 '''
     Testing the algorithm on the "wine quality" dataset consisting of 4,898 observations, 11 features, and 1
-    reponse variable.  All features are continuous and the response is categorical.
+    reponse variable.  All features are continuous and the response is categorical.  The goal is to classify 
+    by wine quality.
 '''
 
 from random_forest_parallel import train_random_forest
