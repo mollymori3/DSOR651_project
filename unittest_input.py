@@ -1,7 +1,9 @@
-```
+'''
+
 Unit test to make sure that the dimensions of the inputs (X, y) are compatible.  That is, there have to be the same number
 of entries in X as in y.
-```
+
+'''
 
 import unittest
 import numpy as np
@@ -10,7 +12,8 @@ from random_forest_parallel import train_random_forest
 
 class TestRandomForestInvalidInput(unittest.TestCase):
     def setUp(self):
-        self.X, self.y = make_classification(n_samples=1000, n_features=20, n_informative=15, n_redundant=5, random_state=42)
+        self.X, self.y = make_classification(n_samples = 1000, n_features=  20, n_informative = 15, n_redundant = 5, random_state = 13)
+        # 1000 samples, 20 columns (15 of which are helpful for classification, remaining 5 are linear combos. of other features)
 
     def test_invalid_X_shape(self):
         # Create invalid input with incorrect shape
