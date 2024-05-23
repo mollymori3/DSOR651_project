@@ -148,7 +148,19 @@ def train_random_forest(X, y, n_estimators = 100, max_depth = None, min_samples_
         return partitions
 ```
 
-3.  The third lesson is that `pool.starmap()` is better suited to this particular algorithm than `queue()`.  
+3.  The third lesson is that `pool.starmap()` is better suited to this particular algorithm than `queue()`.  With no inherent need for communication among processes, `pool()` makes more sense.  Also, `pool()` is generally useful for parallelizing functions across multiple input values -- in this case, the random forest function across multiple partitions.
+
+```
+with mp.Pool(processes=n_partitions) as pool:
+        results = pool.starmap(train_partition, [(partition, n_estimators, max_depth, min_samples_split) for partition in data_partitions]) # for each partition, apply random forest model.
+                    # starmap is like map for tuples (i.e. partitions to hyperparameters)
+    
+    # Extract accuracies and durations from results
+    accuracies = [result[0] for result in results]
+    durations = [result[1] for result in results]
+    
+    return accuracies, durations  # Return accuracies and times
+```
 
 ## 9. Unit-Testing
 There are 3 unit tests to check the capability of the code to handle errors and logic.  
