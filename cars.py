@@ -4,7 +4,7 @@
 
     Testing the algorithm on the "cars" dataset consisting of 302 observations, 8 features, and 1
     reponse variable.  There are 3 continuous, 4 categorical features, and 1 binary feature. 
-    The response is categorical.
+    The response is categorical.  The goal is to classify by transmission type.
 '''
 
 
