@@ -1,8 +1,6 @@
 '''
-
-Unit test to make sure that the dimensions of the inputs (X, y) are compatible.  That is, there have to be the same number
-of entries in X as in y.
-
+    Unit test to make sure that the dimensions of the inputs (X, y) are compatible.  That is, there have to be the same number
+    of entries in X as in y.
 '''
 
 import unittest
