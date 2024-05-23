@@ -13,11 +13,11 @@ There are four user-specified hyperparameters:
 4.    *n_partitions* --  the number of random trees to run in parallel
 
 ## 3. Background
-To build this algorithm, I first learned how to use `RandomForestClassifier()` from Python's `sklearn.ensemble` package given an arbitrary numerical dataset. I explored the various hyperparameters, as defined above, and decided on *accuracy* as my metric of choice for the model.
+To build this algorithm, I first learned how to use `RandomForestClassifier()` from Python's `sklearn.ensemble` package given an arbitrary numerical dataset. I explored the various hyperparameters, as defined above, and decided on *accuracy* as my metric of choice for evaluating the effectiveness of the model.
 
-With parallel processing in mind, I coded partitioning of the arbitrary data based on a globally defined variable, *n_partitions*.  With each partition made, I was able to implement `pool.starmap` from the `multiprocessing` module, which essentially mapped tuples of information to respective models.  That is, the pooled parallel processing ensured that each partition trained a unique tree and yielded its own accuracy.  
+With parallel processing in mind, I coded partitioning of the arbitrary data based on a globally defined variable, *n_partitions*.  With each partition made, I was able to implement `pool.starmap()` from the `multiprocessing` module, which essentially maps tuples of information to respective models.  That is, the pooled parallel processing ensures that each partition trained a unique tree and yields its own accuracy.  
 
-For my first three datasets -- randomly generated numbers, pizza data, and wine data -- the algorithm worked as intended.  That's because all of these datasets had strictly *numerical* data.  It wasn't until I tried to pass my challenge dataset through that I realized there were no precautinos for *categorical* data.  With this, I coded a `LabelEncoder()` from the `scikitlearn.preprocessing` package which converted all categorical variables to labeled numerical data.  This addition allowed the algorithm to run on the heart data.  
+For my first three datasets -- randomly generated numbers, pizza data, and wine data -- the algorithm worked as intended.  That's because all of these datasets had strictly *numerical* data.  It wasn't until I tried to pass my challenge dataset, car data, through that I realized there were no precautions for *categorical* data.  With this, I coded a `LabelEncoder()` from the `scikitlearn.preprocessing` package which converted all categorical variables to labeled numerical data.  This addition allowed the algorithm to run on the car data.  
 
 ## 4. Pseudocode
 
